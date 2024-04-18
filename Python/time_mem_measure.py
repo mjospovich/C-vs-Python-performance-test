@@ -10,8 +10,10 @@ def measure_time_and_memory(function, repetitions=100):
     start_time = time.perf_counter() # Get the start time
     start_memory = process.memory_full_info().rss # Get the start memory
 
-    for _ in range(repetitions):
+    for i in range(repetitions):
+        print(f"REPETITION {i + 1}/{repetitions}", end=" ")
         function() # Call the function 'repetitions' times
+        print("DONE")
 
     end_time = time.perf_counter() # Get the end time
     end_memory = process.memory_full_info().rss # Get the end memory

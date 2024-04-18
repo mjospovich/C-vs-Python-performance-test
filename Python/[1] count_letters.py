@@ -1,6 +1,6 @@
 from time_mem_measure import print_time_and_memory
 
-
+# First test function. It is O(N) time complexity.
 def count_letters():
     """Loads the sample text from file and counts the number of letters in it (cap sensitive)."""
     

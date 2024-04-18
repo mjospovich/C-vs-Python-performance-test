@@ -1,6 +1,7 @@
 from time_mem_measure import print_time_and_memory
 
 
+# Second test function. It is O(N^3) time complexity, where N is one dimension of the matrix.
 def matrix_multiplication():
     """Loads two matrices from csv files and multiplis them."""
 
