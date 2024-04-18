@@ -1,0 +1,23 @@
+from time_mem_measure import print_time_and_memory
+
+
+def matrix_multiplication():
+    """Loads two matrices from csv files and multiplis them."""
+
+    # import the necessary libraries
+    import numpy as np
+    import pandas as pd
+
+    # load the matrices from csv files
+    matrix1 = pd.read_csv('assets/matrix1.csv', header=None).values
+    matrix2 = pd.read_csv('assets/matrix2.csv', header=None).values
+
+    # multiply the matrices
+    result = np.dot(matrix1, matrix2)
+
+    # print the result
+    print(result)
+
+
+if __name__ == '__main__':
+    print_time_and_memory(matrix_multiplication)
