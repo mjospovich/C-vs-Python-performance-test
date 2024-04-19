@@ -19,4 +19,4 @@ def bubble_sort():
 
 
 if __name__ == '__main__':
-    print_time_and_memory(bubble_sort)
+    print_time_and_memory(bubble_sort, 1)

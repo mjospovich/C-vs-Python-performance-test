@@ -21,4 +21,4 @@ def matrix_multiplication():
 
 
 if __name__ == '__main__':
-    print_time_and_memory(matrix_multiplication)
+    print_time_and_memory(matrix_multiplication, 1)

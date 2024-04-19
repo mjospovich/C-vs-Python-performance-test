@@ -22,4 +22,4 @@ def count_letters():
 
 
 if __name__ == "__main__":
-    print_time_and_memory(count_letters, 20)
+    print_time_and_memory(count_letters, 1)
