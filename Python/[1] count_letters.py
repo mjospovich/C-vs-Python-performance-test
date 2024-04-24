@@ -8,7 +8,7 @@ def count_letters():
         text = file.read()
 
     dict = {}
-    skipped = [" ", ".", ",", "!", "?", ":", "\n"]
+    skipped = [" ", ".", ",", "!", "?", ":", "-", ";", "'", "\n"]
 
     for let in set(text):
         if let not in skipped:
@@ -18,7 +18,7 @@ def count_letters():
         if let not in skipped:
             dict[let] += 1
 
-    print(dict)
+    #print(dict)
 
 
 if __name__ == "__main__":
