@@ -17,7 +17,7 @@ def matrix_multiplication():
     result = np.dot(matrix1, matrix2)
 
     # print the result
-    print(result)
+    #print(result)
 
 
 if __name__ == '__main__':
