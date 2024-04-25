@@ -3,7 +3,7 @@
 #include "time_mem_measure.c"
 
 #define MAX_CHARS 256
-#define FILE_PATH "C:/GitHub/C-vs-Python-performance-test/assets/sample_text.txt"
+#define FILE_PATH "../assets/sample_text.txt"
 
 
 int count_letters(void) {

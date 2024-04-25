@@ -15,7 +15,7 @@ def bubble_sort():
             if numbers[j] > numbers[j + 1]:
                 numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]
 
-    print(numbers)
+    #print(numbers)
 
 
 if __name__ == '__main__':
