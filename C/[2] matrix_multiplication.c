@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-//#include "time_mem_measure.c"
+#include "time_mem_measure.c"
 
 #define MATRIX_SIZE 1000
 #define MAX_CHAR 5000
@@ -12,9 +12,17 @@ void matrix_multiplication() {
     char ch;
     char row[MAX_CHAR];
 
-    int **matrix1 = (int**)malloc(sizeof(int) * MATRIX_SIZE * MATRIX_SIZE);
-    int **matrix2 = malloc(sizeof(int) * MATRIX_SIZE * MATRIX_SIZE);
-    int **result = malloc(sizeof(int) * MATRIX_SIZE * MATRIX_SIZE);
+    int **matrix1 = (int**)malloc(MATRIX_SIZE * sizeof(int*));
+    for(i = 0; i < MATRIX_SIZE; i++)
+        matrix1[i] = (int*)malloc(MATRIX_SIZE * sizeof(int));
+
+    int **matrix2 = (int**)malloc(MATRIX_SIZE * sizeof(int*));
+    for(i = 0; i < MATRIX_SIZE; i++)
+        matrix2[i] = (int*)malloc(MATRIX_SIZE * sizeof(int));
+
+    int **result = (int**)malloc(MATRIX_SIZE * sizeof(int*));
+    for(i = 0; i < MATRIX_SIZE; i++)
+        result[i] = (int*)malloc(MATRIX_SIZE * sizeof(int));
 
     // Open matrix1 file
     fp1 = fopen("../assets/matrix1.csv", "r");
@@ -30,7 +38,7 @@ void matrix_multiplication() {
         fclose(fp1);
         return;
     }
-    printf("Files opened.\n");
+    //printf("Files opened.\n");
     // Read matrix1 from file
     for (i = 0; i < MATRIX_SIZE; i++) {
         j = 0;
@@ -50,7 +58,7 @@ void matrix_multiplication() {
         }
         strcpy(row, "");
     }
-    printf("Matrix 1 read.\n");
+    //printf("Matrix 1 read.\n");
 
     // Read matrix2 from file
     for (i = 0; i < MATRIX_SIZE; i++) {
@@ -71,27 +79,41 @@ void matrix_multiplication() {
         }
         strcpy(row, "");
     }
-    printf("Matrix 2 read.\n");
+    //printf("Matrix 2 read.\n");
     
 
-    // Perform matrix multiplication
-    // for (i = 0; i < MATRIX_SIZE; i++) {
-    //     for (j = 0; j < MATRIX_SIZE; j++) {
-    //         result[i][j] = 0;
-    //         for (k = 0; k < MATRIX_SIZE; k++) {
-    //             result[i][j] += matrix1[i][k] * matrix2[k][j];
-    //         }
-    //     }
-    // }
+    //Perform matrix multiplication
+    for (i = 0; i < MATRIX_SIZE; i++) {
+        for (j = 0; j < MATRIX_SIZE; j++) {
+            result[i][j] = 0;
+            for (k = 0; k < MATRIX_SIZE; k++) {
+                result[i][j] += matrix1[i][k] * matrix2[k][j];
+            }
+        }
+    }
 
     // Close the files
     fclose(fp1);
     fclose(fp2);
-    printf("Matrix multiplication done.\n");
+
+    // Free the memory
+    for(i = 0; i < MATRIX_SIZE; i++)
+        free(matrix1[i]);
+    free(matrix1);
+
+    for(i = 0; i < MATRIX_SIZE; i++)
+        free(matrix2[i]);
+    free(matrix2);
+
+    for(i = 0; i < MATRIX_SIZE; i++)
+        free(result[i]);
+    free(result);
+
+    //printf("Matrix multiplication done.\n");
 }
 
 int main() {
-    matrix_multiplication();
-    //print_time_and_memory(matrix_multiplication, 1);
+    //matrix_multiplication();
+    print_time_and_memory(matrix_multiplication, 1);
     return 0;
 }
